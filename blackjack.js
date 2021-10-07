@@ -19,6 +19,8 @@ let BARAJA;
 const boton_comenzar_juego = document.getElementById("comenzar_juego");
 const boton_pedir_carta = document.getElementById("pedir_carta");
 const boton_parar = document.getElementById("parar");
+const boton_pedir_carta2 = document.getElementById("pedir_carta2");
+const boton_parar2 = document.getElementById("parar2");
 let valor_carta, cartas, elegida, suma, suma2, desicion;
 
 const pedir_carta = () => {
