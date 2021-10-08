@@ -20,6 +20,36 @@ const boton_comenzar_juego = document.getElementById("comenzar_juego");
 const boton_pedir_carta = document.getElementById("pedir_carta");
 const boton_parar = document.getElementById("parar");
 let valor_carta, cartas, elegida, suma, suma2, desicion,turno;
+let tres_segundos;
+
+const esperar_pedir_carta = () => {
+    if (suma < suma2 || desicion === 0) {
+        /* setTimeout(pedir_carta,3000); */
+        pedir_carta();
+        if (suma === 21) {
+            desicion = 1;
+            /* console.log("GANASTE IA"); */
+            boton_parar.removeEventListener("click", parar_pedir_cartas);
+        }
+        if (suma === suma2) {
+            desicion = Math.round(Math.random());
+            console.log("desicion: ",desicion);
+            if (desicion === 1) {
+                console.log("EMPATE");
+                clearInterval(tres_segundos);
+            }
+        } else if (suma > suma2) {
+            desicion = 1;
+            if (suma < 22) {
+                console.log("GANASTE IA");
+            }
+            boton_parar.removeEventListener("click", parar_pedir_cartas);
+            clearInterval(tres_segundos);
+        }
+    } else {
+        clearInterval(tres_segundos);
+    }
+}
 
 const pedir_carta = () => {
     valor_carta = Math.trunc(Math.random()*ARREGLO.length);
@@ -48,48 +78,31 @@ const sumar_cartas = () => {
             console.log("GANASTE JUGADOR");
         } else if (turno === 1) {
             console.log("GANASTE IA");
+            clearInterval(tres_segundos);
         }
-        /* suma2 = suma; */
+        boton_parar.removeEventListener("click", parar_pedir_cartas);
         boton_pedir_carta.removeEventListener("click", pedir_carta);
     } else if (suma > 21) {
         if (turno === 0) {
             console.log("perdiste jugador :(");
         } else if (turno === 1) {
             console.log("perdiste IA :(");
+            clearInterval(tres_segundos);
         }
         boton_pedir_carta.removeEventListener("click", pedir_carta);
+        boton_parar.removeEventListener("click", parar_pedir_cartas);
     }
 
 };
 
 const parar_pedir_cartas = () => {
+    boton_parar.setAttribute("disabled","");
     console.log("PARAR");
     turno = 1;
     boton_pedir_carta.removeEventListener("click", pedir_carta);
     suma2 = suma;
     suma = 0;
-    while (suma < suma2 || desicion === 0) {
-        pedir_carta();
-        if (suma === 21) {
-            desicion = 1;
-            /* console.log("GANASTE IA"); */
-            boton_parar.removeEventListener("click", parar_pedir_cartas);
-        }
-        if (suma === suma2) {
-            desicion = Math.round(Math.random());
-            console.log("desicion: ",desicion);
-            if (desicion === 1) {
-                console.log("EMPATE");
-            }
-        } else if (suma > suma2) {
-            desicion = 1;
-            if (suma < 22) {
-                console.log("GANASTE IA");
-            }
-            boton_parar.removeEventListener("click", parar_pedir_cartas);
-        }
-    }
-    //pasa esta función afuera para que cuando se ejecute esta también se borre
+    tres_segundos = setInterval(esperar_pedir_carta,3000);
 };
 
 boton_comenzar_juego.addEventListener("click", () => {
@@ -102,9 +115,9 @@ boton_comenzar_juego.addEventListener("click", () => {
     suma = 0;
     desicion = 0;
     turno = 0;
+    boton_parar.removeAttribute("disabled");
     boton_parar.addEventListener("click", parar_pedir_cartas);
     boton_pedir_carta.addEventListener("click", pedir_carta);
     console.log("YA SALÍ");
 });
-console.log("suma: ",suma,"suma2 ",suma2);
 
