@@ -21,7 +21,39 @@ const boton_pedir_carta = document.getElementById("pedir_carta");
 const boton_parar = document.getElementById("parar");
 const boton_pedir_carta2 = document.getElementById("pedir_carta2");
 const boton_parar2 = document.getElementById("parar2");
-let valor_carta, cartas, elegida, suma, suma2, desicion;
+let valor_carta, cartas, elegida, suma, suma2, desicion, turno, parado, parado2, ultimo_toque;
+
+
+const remover_todo = () => {
+    boton_pedir_carta.removeEventListener("click", pedir_carta1);
+    boton_pedir_carta2.removeEventListener("click", pedir_carta2);
+    boton_parar.removeEventListener("click", parar_pedir_cartas);
+    boton_parar2.removeEventListener("click", parar_pedir_cartas2);
+}
+
+const pedir_carta1 = () => {
+    ultimo_toque="boton 1";
+    if (parado === false) {
+        boton_pedir_carta.removeAttribute("enabled");
+        boton_pedir_carta.setAttribute("disabled","");
+        boton_pedir_carta2.removeAttribute("disabled");
+        boton_pedir_carta2.setAttribute("enabled","");
+    }
+    turno = true;
+    pedir_carta();
+};
+
+const pedir_carta2 = () => {
+    ultimo_toque="boton 2";
+    if (parado2 === false) {
+        boton_pedir_carta2.removeAttribute("enabled");
+        boton_pedir_carta2.setAttribute("disabled","");
+        boton_pedir_carta.removeAttribute("disabled");
+        boton_pedir_carta.setAttribute("enabled","");
+    }
+    turno = false;
+    pedir_carta();
+};
 
 const pedir_carta = () => {
     valor_carta = Math.trunc(Math.random()*ARREGLO.length);
@@ -29,7 +61,12 @@ const pedir_carta = () => {
     while (cartas > BARAJA[valor_carta].length-1) {
         --cartas;
     }
-    sumar_cartas();
+    if (turno === true) {
+        sumar_cartas();
+    } else {
+        sumar_cartas2();
+    }
+    
     elegida = BARAJA[valor_carta][cartas];
     BARAJA[valor_carta].splice(cartas,1);
     if (BARAJA[valor_carta].length===0) {
@@ -37,40 +74,88 @@ const pedir_carta = () => {
         ARREGLO.splice(valor_carta,1);
     }
     console.log(elegida);
+    if (parado2 === true) {
+        boton_pedir_carta.removeAttribute("disabled");
+        boton_pedir_carta.setAttribute("enabled","");
+    }
+    if (parado === true) {
+        boton_pedir_carta2.removeAttribute("disabled");
+        boton_pedir_carta2.setAttribute("enabled","");
+    }
 }
 
 const sumar_cartas = () => {
     if (suma < 21) {
         suma = suma + ARREGLO[valor_carta];
-        console.log(suma);
+        console.log("puntos del jugador 1: ",suma);
+        if (parado2 === true && suma > suma2 && suma < 21) {
+            console.warn("GANASTE jugador 1");
+            remover_todo();
+        }
     }
     if (suma === 21) {
-        console.log("GANASTE");
-        /* suma2 = suma; */
-        boton_pedir_carta.removeEventListener("click", pedir_carta);
+        console.warn("GANASTE jugador 1");
+        remover_todo();
     } else if (suma > 21) {
-        console.log("perdiste");
-        boton_pedir_carta.removeEventListener("click", pedir_carta);
+        console.warn("perdiste jugador 1");
+        remover_todo();
     }
+};
 
+const sumar_cartas2 = () => {
+    if (suma2 < 21) {
+        suma2 = suma2 + ARREGLO[valor_carta];
+        console.log("puntos del jugador 2: ",suma2);
+        if (parado === true && suma2 > suma && suma2 < 21) {
+            console.warn("GANASTE jugador 2");
+            remover_todo();
+        }
+    }
+    if (suma2 === 21) {
+        console.warn("GANASTE jugador 2");
+        remover_todo();
+    } else if (suma2 > 21) {
+        console.warn("perdiste jugador 2");
+        remover_todo();
+    }
 };
 
 const parar_pedir_cartas = () => {
+    parado = true;
     console.log("PARAR");
-    boton_pedir_carta.removeEventListener("click", pedir_carta);
-    suma2 = suma;
-    suma = 0;
-    while (suma < suma2 || desicion === 0) {
-        pedir_carta();
-        if (suma === 21) {
-            desicion = 1;
-            boton_parar.removeEventListener("click", parar_pedir_cartas);
+    boton_pedir_carta.removeEventListener("click", pedir_carta1);
+    boton_parar.removeEventListener("click", parar_pedir_cartas);
+    if (ultimo_toque === "boton 2") {
+        boton_pedir_carta2.removeAttribute("disabled");
+        boton_pedir_carta2.setAttribute("enabled","");
+    }
+    if (parado2 === true && parado === true) {
+        if (suma > suma2) {
+            console.warn("GANASTE jugador 1");
+        } else if (suma2 > suma) {
+            console.warn("GANASTE jugador 2");
+        } else {
+            console.warn("EMPATE");
         }
-        if (suma === suma2) {
-            desicion = Math.round(Math.random());
-            console.log("desicion: ",desicion)
-        } else if (suma > suma2) {
-            desicion = 1;
+    }
+};
+
+const parar_pedir_cartas2 = () => {
+    parado2 = true;
+    console.log("PARAR");
+    boton_pedir_carta2.removeEventListener("click", pedir_carta2);
+    boton_parar2.removeEventListener("click", parar_pedir_cartas2);
+    if (ultimo_toque === "boton 1") {
+        boton_pedir_carta.removeAttribute("disabled");
+        boton_pedir_carta.setAttribute("enabled","");
+    }
+    if (parado2 === true && parado === true) {
+        if (suma > suma2) {
+            console.warn("GANASTE jugador 1");
+        } else if (suma2 > suma) {
+            console.warn("GANASTE jugador 2");
+        } else {
+            console.warn("EMPATE");
         }
     }
 };
@@ -83,10 +168,19 @@ boton_comenzar_juego.addEventListener("click", () => {
     }
     console.log(ARREGLO, BARAJA);
     suma = 0;
+    suma2 = 0;
     desicion = 0;
+    parado = false;
+    parado2 = false;
+    activo = true;
+    activo2 = true;
+    boton_pedir_carta.removeAttribute("disabled");
+    boton_pedir_carta.setAttribute("enabled","");
+    boton_pedir_carta2.removeAttribute("disabled");
+    boton_pedir_carta2.setAttribute("enabled","");
     boton_parar.addEventListener("click", parar_pedir_cartas);
-    boton_pedir_carta.addEventListener("click", pedir_carta);
-    console.log("YA SALÍ");
+    boton_pedir_carta.addEventListener("click", pedir_carta1);
+    boton_parar2.addEventListener("click", parar_pedir_cartas2);
+    boton_pedir_carta2.addEventListener("click", pedir_carta2);
 });
-console.log("suma: ",suma,"suma2 ",suma2);
 
