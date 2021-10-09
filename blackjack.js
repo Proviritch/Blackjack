@@ -19,12 +19,27 @@ let BARAJA;
 const boton_comenzar_juego = document.getElementById("comenzar_juego");
 const boton_pedir_carta = document.getElementById("pedir_carta");
 const boton_parar = document.getElementById("parar");
-let valor_carta, cartas, elegida, suma, suma2, desicion,turno;
+let valor_carta, cartas, elegida, suma, suma2, desicion,turno, cont, x;
 let tres_segundos;
+/* const body = document.getElementsByTagName("body")[0]; */
+const section_jugador1 = document.getElementById("section_jugador1");
+const section_jugador2 = document.getElementById("section_jugador2");
+let img = document.getElementsByTagName("img");
+let puntuacion1 = document.getElementById("puntuacion1");
+let puntuacion2 = document.getElementById("puntuacion2");
+let main = document.getElementsByTagName("main")[0];
+let span = document.createElement("span");
+span.classList.add("resultado");
+
+
+const borrar_img = () => {
+    for (let i = cont - 1; i >= 0; i--) {
+        img[i].remove();
+    } 
+}
 
 const esperar_pedir_carta = () => {
     if (suma < suma2 || desicion === 0) {
-        /* setTimeout(pedir_carta,3000); */
         pedir_carta();
         if (suma === 21) {
             desicion = 1;
@@ -36,12 +51,18 @@ const esperar_pedir_carta = () => {
             console.log("desicion: ",desicion);
             if (desicion === 1) {
                 console.log("EMPATE");
+                span.textContent = "EMPATE";
+                main.append(span);
+                /* main.insertAdjacentHTML("beforebegin",'<span id="resultado">EMPATE</span>'); */
                 clearInterval(tres_segundos);
             }
         } else if (suma > suma2) {
             desicion = 1;
             if (suma < 22) {
                 console.log("GANASTE IA");
+                span.textContent = "GANASTE IA";
+                main.append(span);
+                /* main.insertAdjacentHTML("beforebegin",'<span id="resultado">GANASTE IA</span>'); */
             }
             boton_parar.removeEventListener("click", parar_pedir_cartas);
             clearInterval(tres_segundos);
@@ -65,6 +86,15 @@ const pedir_carta = () => {
         ARREGLO.splice(valor_carta,1);
     }
     console.log(elegida);
+    if (turno === 0) {
+        section_jugador1.insertAdjacentHTML('beforeend',`<img style="transform: translateX(-35%) translateY(${x}%) rotate(35deg);" src="${elegida}">`);
+        puntuacion1.textContent = suma;
+    } else if (turno === 1) {
+        section_jugador2.insertAdjacentHTML('beforeend',`<img style="transform: translateX(35%) translateY(${x}%) rotate(35deg);" src="${elegida}">`);
+        puntuacion2.textContent = suma;
+    }
+    cont++;
+    x+=50;
 }
 
 const sumar_cartas = () => {
@@ -76,8 +106,14 @@ const sumar_cartas = () => {
     if (suma === 21) {
         if (turno === 0) {
             console.log("GANASTE JUGADOR");
+            span.textContent = "GANASTE JUGADOR";
+            main.append(span);
+            /* main.insertAdjacentHTML("beforebegin",'<span id="resultado">GANASTE JUGADOR</span>'); */
         } else if (turno === 1) {
             console.log("GANASTE IA");
+            span.textContent = "GANASTE IA";
+            main.append(span);
+            /* main.insertAdjacentHTML("beforebegin",'<span id="resultado">GANASTE IA</span>'); */
             clearInterval(tres_segundos);
         }
         boton_parar.removeEventListener("click", parar_pedir_cartas);
@@ -85,8 +121,14 @@ const sumar_cartas = () => {
     } else if (suma > 21) {
         if (turno === 0) {
             console.log("perdiste jugador :(");
+            span.textContent = "GANASTE IA";
+            main.append(span);
+            /* main.insertAdjacentHTML("beforebegin",'<span id="resultado">GANASTE IA</span>'); */
         } else if (turno === 1) {
             console.log("perdiste IA :(");
+            span.textContent = "GANASTE JUGADOR";
+            main.append(span);
+            /* main.insertAdjacentHTML("beforebegin",'<span id="resultado">GANASTE JUGADOR</span>'); */
             clearInterval(tres_segundos);
         }
         boton_pedir_carta.removeEventListener("click", pedir_carta);
@@ -102,7 +144,8 @@ const parar_pedir_cartas = () => {
     boton_pedir_carta.removeEventListener("click", pedir_carta);
     suma2 = suma;
     suma = 0;
-    tres_segundos = setInterval(esperar_pedir_carta,3000);
+    x = 0;
+    tres_segundos = setInterval(esperar_pedir_carta,2500);
 };
 
 boton_comenzar_juego.addEventListener("click", () => {
@@ -112,9 +155,15 @@ boton_comenzar_juego.addEventListener("click", () => {
         BARAJA[i] = [...BARAJA_ORIGINAL[i]];
     }
     console.log(ARREGLO, BARAJA);
+    borrar_img();
     suma = 0;
     desicion = 0;
     turno = 0;
+    cont = 0;
+    x = 0;
+    span.remove();
+    puntuacion1.textContent = 0;
+    puntuacion2.textContent = 0;
     boton_parar.removeAttribute("disabled");
     boton_parar.addEventListener("click", parar_pedir_cartas);
     boton_pedir_carta.addEventListener("click", pedir_carta);

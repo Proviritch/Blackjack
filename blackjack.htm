@@ -5,11 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlackJack</title>
+    <link rel="stylesheet" href="blackjack.css">
 </head>
 <body>
-    <button id="comenzar_juego">Comenzar juego</button>
-    <button id="pedir_carta" type="button">Pedir carta</button>
-    <button id="parar" type="button">Parar</button>
+    <header>
+        <button id="comenzar_juego">Comenzar juego</button>
+    </header>
+    <main>
+        <section id="section_jugador1"></section>
+        <section id="en_medio">
+            <div class="en_medio_div_principal">
+                <p><span id="puntuacion1">0</span> vs <span id="puntuacion2">0</span></p>
+                <div class="en_medio_div_botones">
+                    <button id="pedir_carta" type="button">Pedir carta</button>
+                    <button id="parar" type="button">Parar</button>
+                </div>
+            </div>
+        </section>
+        <section id="section_jugador2"></section>
+        <!-- <span id="resultado"></span> -->
+    </main>
+
     <script src="blackjack.js"></script>
 </body>
 </html>

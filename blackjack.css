@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-comenzar: #FF0075;
+    --color-botones: #77D970;
+    --color-bot: #FFCF82;
+    --color-jugador: #64B0F5;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: rgb(39, 39, 39);
+}
+
+img {
+    width: 100%;
+    display: block;
+    position: absolute;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+}
+
+section {
+    width: 33.3%;
+    position: relative;
+}
+
+button {
+    display: block;
+    padding: 0.3em 1em;
+    border-radius: 5px;
+    background: var(--color-botones);
+}
+
+#pedir_carta {
+    margin: 1em 0;
+}
+
+#comenzar_juego {
+    background: var(--color-comenzar);
+    color: white;
+}
+
+p {
+    color: white;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+#en_medio {
+    transform: translateX(100%);
+    position: fixed;
+    /* flex-wrap: wrap; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 2rem);
+}
+
+.en_medio_div_botones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+span {
+    border-radius: 5px;
+    color: black;
+    padding: 0.1em 0.15em;
+}
+
+.resultado {
+    font-size: 2.5rem;
+    position: fixed;
+    background: red;
+    text-align: center;
+    transform: translateX(calc(50vw - 50%)) translateY(10vh);
+}
+
+#puntuacion1 {
+    color: var(--color-jugador);
+}
+
+#puntuacion2 {
+    color: var(--color-bot);
+    /* color: white; */
+}
