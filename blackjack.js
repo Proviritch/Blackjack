@@ -21,7 +21,7 @@ const boton_pedir_carta = document.getElementById("pedir_carta");
 const boton_parar = document.getElementById("parar");
 const boton_pedir_carta2 = document.getElementById("pedir_carta2");
 const boton_parar2 = document.getElementById("parar2");
-let valor_carta, cartas, elegida, suma, suma2, desicion, turno, parado, parado2, ultimo_toque;
+let valor_carta, cartas, elegida, suma, suma2, desicion, turno, parado, parado2, ultimo_toque, x, y;
 //De la rama main
 let tres_segundos;
 const body = document.getElementsByTagName("body")[0];
@@ -93,6 +93,19 @@ const pedir_carta = () => {
         boton_pedir_carta2.removeAttribute("disabled");
         boton_pedir_carta2.setAttribute("enabled","");
     }
+    //De la rama main
+    if (turno === true) {
+        section_jugador1.insertAdjacentHTML('beforeend',`<img style="transform: translateX(0%) translateY(${x}%) rotate(0deg);" src="${elegida}">`);
+        puntuacion1.textContent = suma;
+        x+=50;
+    } else if (turno === false) {
+        section_jugador2.insertAdjacentHTML('beforeend',`<img style="transform: translateX(0%) translateY(${y}%) rotate(0deg);" src="${elegida}">`);
+        puntuacion2.textContent = suma;
+        y+=50;
+    }
+/*     cont++;
+    x+=50; */
+    //
 }
 
 const sumar_cartas = () => {
@@ -178,6 +191,8 @@ boton_comenzar_juego.addEventListener("click", () => {
         BARAJA[i] = [...BARAJA_ORIGINAL[i]];
     }
     console.log(ARREGLO, BARAJA);
+    x = 0;
+    y = 0;
     suma = 0;
     suma2 = 0;
     desicion = 0;
