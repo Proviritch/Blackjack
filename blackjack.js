@@ -100,7 +100,7 @@ const pedir_carta = () => {
         x+=50;
     } else if (turno === false) {
         section_jugador2.insertAdjacentHTML('beforeend',`<img style="transform: translateX(0%) translateY(${y}%) rotate(0deg);" src="${elegida}">`);
-        puntuacion2.textContent = suma;
+        puntuacion2.textContent = suma2;
         y+=50;
     }
 /*     cont++;
