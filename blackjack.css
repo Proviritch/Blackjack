@@ -5,29 +5,34 @@
 }
 
 :root {
-    --color-comenzar: #FF0075;
-    --color-botones: #77D970;
-    --color-bot: #FFCF82;
-    --color-jugador: #64B0F5;
+    --color-comenzar: #f15bb5;
+    --color-botones: rgb(192, 192, 192);
+    --color-bot: #fffb00;
+    --color-jugador: #00bfff;
+    --color-resultado: rgb(255, 80, 36);
 }
 
 html {
     font-size: 62.5%;
+    font-family: arial;
 }
 
 body {
-    background: rgb(39, 39, 39);
+    max-width: 100vw;
+    background: rgb(32, 32, 32);
 }
 
 img {
     width: 100%;
     display: block;
     position: absolute;
+    filter: invert(100%);
 }
 
 header {
     display: flex;
     justify-content: center;
+    background: rgb(47, 47, 47);
 }
 
 main {
@@ -37,14 +42,18 @@ main {
 
 section {
     width: 33.3%;
+    max-width: 500px;
     position: relative;
 }
 
 button {
-    display: block;
+    background: none;
+    display: inline;
+    vertical-align: middle;
     padding: 0.3em 1em;
     border-radius: 5px;
-    background: var(--color-botones);
+    border-color: var(--color-botones);
+    color: var(--color-botones);
 }
 
 #pedir_carta {
@@ -52,20 +61,21 @@ button {
 }
 
 #comenzar_juego {
-    background: var(--color-comenzar);
-    color: white;
+    color: var(--color-comenzar);
+    border-color: var(--color-comenzar);
 }
 
 p {
+    font-family: 'Akronim', cursive;
     color: white;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
 }
 
 #en_medio {
     transform: translateX(100%);
     position: fixed;
-    /* flex-wrap: wrap; */
+    max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,6 +85,7 @@ p {
 .en_medio_div_botones {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
 }
 
@@ -85,9 +96,14 @@ span {
 }
 
 .resultado {
-    font-size: 2.5rem;
+    display: block;
+    width: 33.3%;
+    font-size: 3rem;
     position: fixed;
-    background: red;
+    font-weight: bold;
+    font-family: 'Akronim', cursive;
+    color: var(--color-resultado);
+    text-shadow: 0 0 5px rgb(255, 122, 122);
     text-align: center;
     transform: translateX(calc(50vw - 50%)) translateY(10vh);
 }
@@ -98,5 +114,4 @@ span {
 
 #puntuacion2 {
     color: var(--color-bot);
-    /* color: white; */
 }

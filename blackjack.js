@@ -59,8 +59,8 @@ const esperar_pedir_carta = () => {
         } else if (suma > suma2) {
             desicion = 1;
             if (suma < 22) {
-                console.log("GANASTE IA");
-                span.textContent = "GANASTE IA";
+                console.log("IA WINS");
+                span.textContent = "IA WINS";
                 main.append(span);
                 /* main.insertAdjacentHTML("beforebegin",'<span id="resultado">GANASTE IA</span>'); */
             }
@@ -87,10 +87,10 @@ const pedir_carta = () => {
     }
     console.log(elegida);
     if (turno === 0) {
-        section_jugador1.insertAdjacentHTML('beforeend',`<img style="transform: translateX(-35%) translateY(${x}%) rotate(35deg);" src="${elegida}">`);
+        section_jugador1.insertAdjacentHTML('beforeend',`<img style="transform: translateX(0%) translateY(${x}%) rotate(0deg);" src="${elegida}">`);
         puntuacion1.textContent = suma;
     } else if (turno === 1) {
-        section_jugador2.insertAdjacentHTML('beforeend',`<img style="transform: translateX(35%) translateY(${x}%) rotate(35deg);" src="${elegida}">`);
+        section_jugador2.insertAdjacentHTML('beforeend',`<img style="transform: translateX(0%) translateY(${x}%) rotate(0deg);" src="${elegida}">`);
         puntuacion2.textContent = suma;
     }
     cont++;
@@ -106,12 +106,12 @@ const sumar_cartas = () => {
     if (suma === 21) {
         if (turno === 0) {
             console.log("GANASTE JUGADOR");
-            span.textContent = "GANASTE JUGADOR";
+            span.textContent = "PLAYER WINS";
             main.append(span);
             /* main.insertAdjacentHTML("beforebegin",'<span id="resultado">GANASTE JUGADOR</span>'); */
         } else if (turno === 1) {
-            console.log("GANASTE IA");
-            span.textContent = "GANASTE IA";
+            console.log("IA WINS");
+            span.textContent = "IA WINS";
             main.append(span);
             /* main.insertAdjacentHTML("beforebegin",'<span id="resultado">GANASTE IA</span>'); */
             clearInterval(tres_segundos);
@@ -121,12 +121,12 @@ const sumar_cartas = () => {
     } else if (suma > 21) {
         if (turno === 0) {
             console.log("perdiste jugador :(");
-            span.textContent = "GANASTE IA";
+            span.textContent = "IA WINS";
             main.append(span);
             /* main.insertAdjacentHTML("beforebegin",'<span id="resultado">GANASTE IA</span>'); */
         } else if (turno === 1) {
             console.log("perdiste IA :(");
-            span.textContent = "GANASTE JUGADOR";
+            span.textContent = "PLAYER WINS";
             main.append(span);
             /* main.insertAdjacentHTML("beforebegin",'<span id="resultado">GANASTE JUGADOR</span>'); */
             clearInterval(tres_segundos);
