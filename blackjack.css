@@ -44,6 +44,8 @@ body {
     --color-header: rgb(47, 47, 47);
     --color-sombra-resultado: rgb(255, 122, 122); 
     --filtro: invert(90%);
+    --color-borde-button-jugador1: #fffb00;
+    --color-borde-button-jugador2: #00bfff;
     transition: background 1s;
 }
 
@@ -62,6 +64,7 @@ body {
     --color-header: rgb(197, 197, 197);
     --color-sombra-resultado: rgb(66, 29, 29); 
     --filtro: invert(0%);
+    /* --color-borde-button-jugador1: ; */
     background: rgb(216, 216, 216);
     transition: background 1s;
 }
@@ -169,4 +172,21 @@ span {
     color: var(--color-bot);
     background: var(--bg-contador2);
     transition: all 1s;
+}
+
+#parar2 {
+    margin: 1em 0;
+}
+
+#parar2, #pedir_carta2 {
+    border-color: var(--color-borde-button-jugador1);
+    background: var(--bg-contador1);
+    /* color: rgb(34, 34, 34); */
+    
+}
+
+#parar, #pedir_carta {
+    border-color: var(--color-borde-button-jugador2);
+    background: var(--bg-contador2);
+    /* color: rgb(34, 34, 34); */
 }
