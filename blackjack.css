@@ -4,35 +4,82 @@
     box-sizing: border-box;
 }
 
-:root {
+/* :root {
     --color-comenzar: #f15bb5;
     --color-botones: rgb(192, 192, 192);
     --color-bot: #fffb00;
     --color-jugador: #00bfff;
     --color-resultado: rgb(255, 80, 36);
-}
+} */
 
 html {
     font-size: 62.5%;
     font-family: arial;
 }
 
+#boton_modo_oscuro {
+    position: absolute;
+    transform: translatex(calc(-50vw + 100%));
+    border-radius: 100%;
+    padding: 0.3em 0.3em;
+    background: var(--bg-oscuro);
+    transition: background 1s;
+}
+
+
 body {
     max-width: 100vw;
     background: rgb(32, 32, 32);
+    --bg-oscuro: rgb(20, 33, 70);
+    --bg-contador1: none;
+    --bg-contador2: none;
+    --color-bg-button: none;
+    --color-texto: white;
+    --bg-button-comenzar: none;
+    --color-comenzar: #f15bb5;
+    --color-botones: rgb(192, 192, 192);
+    --color-bot: #fffb00;
+    --color-jugador: #00bfff;
+    --color-resultado: rgb(255, 80, 36);
+    --color-header: rgb(47, 47, 47);
+    --color-sombra-resultado: rgb(255, 122, 122); 
+    --filtro: invert(90%);
+    transition: background 1s;
+}
+
+.blanco {
+    --bg-oscuro: rgb(255, 168, 29);
+    --bg-contador1: #fffb00;
+    --bg-contador2: #00bfff;
+    --color-bg-button: rgb(32, 32, 32);
+    --color-texto: black;
+    --color-comenzar: white;
+    --bg-button-comenzar: #f15bb5;
+    --color-botones: white;
+    --color-bot: rgb(153, 117, 0);
+    --color-jugador: rgb(0, 85, 155);
+    --color-resultado: red;
+    --color-header: rgb(197, 197, 197);
+    --color-sombra-resultado: rgb(66, 29, 29); 
+    --filtro: invert(0%);
+    background: rgb(216, 216, 216);
+    transition: background 1s;
 }
 
 img {
     width: 100%;
     display: block;
     position: absolute;
-    filter: invert(90%);
+    filter: var(--filtro);
+    transition: filter 1s;
 }
 
 header {
+    position: relative;
     display: flex;
     justify-content: center;
-    background: rgb(47, 47, 47);
+    background: var(--color-header);
+    transition: background 1s;
 }
 
 main {
@@ -47,13 +94,15 @@ section {
 }
 
 button {
-    background: none;
+    background: var(--color-bg-button);
     display: inline;
-    vertical-align: middle;
+/*     vertical-align: middle; */
     padding: 0.3em 1em;
     border-radius: 5px;
     border-color: var(--color-botones);
     color: var(--color-botones);
+    cursor: pointer;
+    transition: all 1s;
 }
 
 #pedir_carta {
@@ -61,13 +110,15 @@ button {
 }
 
 #comenzar_juego {
+    background: var(--bg-button-comenzar);
     color: var(--color-comenzar);
     border-color: var(--color-comenzar);
 }
 
 p {
     font-family: 'Akronim', cursive;
-    color: white;
+    color: var(--color-texto);
+    transition: color 1s;
     text-align: center;
     font-size: 3rem;
 }
@@ -91,7 +142,6 @@ p {
 
 span {
     border-radius: 5px;
-    color: black;
     padding: 0.1em 0.15em;
 }
 
@@ -103,15 +153,20 @@ span {
     font-weight: bold;
     font-family: 'Akronim', cursive;
     color: var(--color-resultado);
-    text-shadow: 0 0 5px rgb(255, 122, 122);
+    text-shadow: 0 0 5px var(--color-sombra-resultado);
     text-align: center;
     transform: translateX(calc(50vw - 50%)) translateY(10vh);
+    transition: all 1s;
 }
 
 #puntuacion1 {
     color: var(--color-jugador);
+    background: var(--bg-contador1);
+    transition: all 1s;
 }
 
 #puntuacion2 {
     color: var(--color-bot);
+    background: var(--bg-contador2);
+    transition: all 1s;
 }

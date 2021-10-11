@@ -19,9 +19,9 @@ let BARAJA;
 const boton_comenzar_juego = document.getElementById("comenzar_juego");
 const boton_pedir_carta = document.getElementById("pedir_carta");
 const boton_parar = document.getElementById("parar");
-let valor_carta, cartas, elegida, suma, suma2, desicion,turno, cont, x;
+let valor_carta, cartas, elegida, suma, suma2, desicion,turno, cont, x, oscuro_switch = 0;
 let tres_segundos;
-/* const body = document.getElementsByTagName("body")[0]; */
+const body = document.getElementsByTagName("body")[0];
 const section_jugador1 = document.getElementById("section_jugador1");
 const section_jugador2 = document.getElementById("section_jugador2");
 let img = document.getElementsByTagName("img");
@@ -30,6 +30,19 @@ let puntuacion2 = document.getElementById("puntuacion2");
 let main = document.getElementsByTagName("main")[0];
 let span = document.createElement("span");
 span.classList.add("resultado");
+
+const boton_modo_oscuro = document.getElementById("boton_modo_oscuro");
+
+boton_modo_oscuro.addEventListener("click", () => {
+    if (oscuro_switch === 0) {
+        body.classList.add("blanco");
+        oscuro_switch = 1;
+    } else {
+        body.classList.remove("blanco");
+        oscuro_switch = 0;
+    }
+    
+});
 
 
 const borrar_img = () => {
