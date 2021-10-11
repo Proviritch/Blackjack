@@ -22,7 +22,18 @@ const boton_parar = document.getElementById("parar");
 const boton_pedir_carta2 = document.getElementById("pedir_carta2");
 const boton_parar2 = document.getElementById("parar2");
 let valor_carta, cartas, elegida, suma, suma2, desicion, turno, parado, parado2, ultimo_toque;
-
+//De la rama main
+let tres_segundos;
+const body = document.getElementsByTagName("body")[0];
+const section_jugador1 = document.getElementById("section_jugador1");
+const section_jugador2 = document.getElementById("section_jugador2");
+let img = document.getElementsByTagName("img");
+let puntuacion1 = document.getElementById("puntuacion1");
+let puntuacion2 = document.getElementById("puntuacion2");
+let main = document.getElementsByTagName("main")[0];
+let span = document.createElement("span");
+span.classList.add("resultado");
+//
 
 const remover_todo = () => {
     boton_pedir_carta.removeEventListener("click", pedir_carta1);
