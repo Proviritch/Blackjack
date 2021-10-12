@@ -146,6 +146,7 @@ p {
 span {
     border-radius: 5px;
     padding: 0.1em 0.15em;
+    /* margin: 1em 0; */
 }
 
 .resultado {
@@ -181,6 +182,7 @@ span {
 #parar2, #pedir_carta2 {
     border-color: var(--color-borde-button-jugador1);
     background: var(--bg-contador1);
+    color: var(--color-texto);
     /* color: rgb(34, 34, 34); */
     
 }
@@ -188,5 +190,14 @@ span {
 #parar, #pedir_carta {
     border-color: var(--color-borde-button-jugador2);
     background: var(--bg-contador2);
+    color: var(--color-texto);
     /* color: rgb(34, 34, 34); */
+}
+
+#pedir_carta2 {
+    margin-top: 1em;
+}
+
+#parar {
+    margin-bottom: 1em;
 }

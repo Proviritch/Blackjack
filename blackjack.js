@@ -21,7 +21,7 @@ const boton_pedir_carta = document.getElementById("pedir_carta");
 const boton_parar = document.getElementById("parar");
 const boton_pedir_carta2 = document.getElementById("pedir_carta2");
 const boton_parar2 = document.getElementById("parar2");
-let valor_carta, cartas, elegida, suma, suma2, desicion, turno, parado, parado2, ultimo_toque, x, y, cont;
+let valor_carta, cartas, elegida, suma, suma2, desicion, turno, parado, parado2, ultimo_toque, x, y, cont, oscuro_switch;
 //De la rama main
 let tres_segundos;
 const body = document.getElementsByTagName("body")[0];
@@ -38,7 +38,20 @@ const borrar_img = () => {
     for (let i = cont - 1; i >= 0; i--) {
         img[i].remove();
     } 
-}
+};
+
+const boton_modo_oscuro = document.getElementById("boton_modo_oscuro");
+
+boton_modo_oscuro.addEventListener("click", () => {
+    if (oscuro_switch === 0) {
+        body.classList.add("blanco");
+        oscuro_switch = 1;
+    } else {
+        body.classList.remove("blanco");
+        oscuro_switch = 0;
+    }
+    
+});
 //
 
 const remover_todo = () => {
@@ -120,14 +133,20 @@ const sumar_cartas = () => {
         console.log("puntos del jugador 1: ",suma);
         if (parado2 === true && suma > suma2 && suma < 21) {
             console.warn("GANASTE jugador 1");
+            span.textContent = "PLAYER 1 WINS";
+            main.append(span);
             remover_todo();
         }
     }
     if (suma === 21) {
         console.warn("GANASTE jugador 1");
+        span.textContent = "PLAYER 1 WINS";
+        main.append(span);
         remover_todo();
     } else if (suma > 21) {
         console.warn("perdiste jugador 1");
+        span.textContent = "PLAYER 2 WINS";
+        main.append(span);
         remover_todo();
     }
 };
@@ -138,14 +157,20 @@ const sumar_cartas2 = () => {
         console.log("puntos del jugador 2: ",suma2);
         if (parado === true && suma2 > suma && suma2 < 21) {
             console.warn("GANASTE jugador 2");
+            span.textContent = "PLAYER 2 WINS";
+            main.append(span);
             remover_todo();
         }
     }
     if (suma2 === 21) {
         console.warn("GANASTE jugador 2");
+        span.textContent = "PLAYER 2 WINS";
+        main.append(span);
         remover_todo();
     } else if (suma2 > 21) {
         console.warn("perdiste jugador 2");
+        span.textContent = "PLAYER 1 WINS";
+        main.append(span);
         remover_todo();
     }
 };
@@ -162,10 +187,16 @@ const parar_pedir_cartas = () => {
     if (parado2 === true && parado === true) {
         if (suma > suma2) {
             console.warn("GANASTE jugador 1");
+            span.textContent = "PLAYER 1 WINS";
+            main.append(span);
         } else if (suma2 > suma) {
             console.warn("GANASTE jugador 2");
+            span.textContent = "PLAYER 2 WINS";
+            main.append(span);
         } else {
             console.warn("EMPATE");
+            span.textContent = "EMPATE";
+            main.append(span);
         }
     }
 };
@@ -182,10 +213,16 @@ const parar_pedir_cartas2 = () => {
     if (parado2 === true && parado === true) {
         if (suma > suma2) {
             console.warn("GANASTE jugador 1");
+            span.textContent = "PLAYER 1 WINS";
+            main.append(span);
         } else if (suma2 > suma) {
             console.warn("GANASTE jugador 2");
+            span.textContent = "PLAYER 2 WINS";
+            main.append(span);
         } else {
             console.warn("EMPATE");
+            span.textContent = "EMPATE";
+            main.append(span);
         }
     }
 };
@@ -206,6 +243,7 @@ boton_comenzar_juego.addEventListener("click", () => {
     parado2 = false;
     activo = true;
     activo2 = true;
+    oscuro_switch = 0;
     borrar_img();
     span.remove();
     cont = 0
