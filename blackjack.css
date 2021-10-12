@@ -80,6 +80,7 @@ header {
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
     background: var(--color-header);
     transition: background 1s;
 }
