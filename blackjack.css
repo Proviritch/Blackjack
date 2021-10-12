@@ -17,13 +17,21 @@ html {
     font-family: arial;
 }
 
-#boton_modo_oscuro {
+#boton_modo_oscuro, #link {
     position: absolute;
     transform: translatex(calc(-50vw + 100%));
     border-radius: 100%;
     padding: 0.3em 0.3em;
     background: var(--bg-oscuro);
     transition: background 1s;
+}
+
+#link {
+    transform: translatex(calc(50vw - 70%));
+    color: var(--color-texto);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 1s;
 }
 
 
@@ -85,6 +93,7 @@ header {
     align-items: center;
     background: var(--color-header);
     transition: background 1s;
+    /* padding: 0 1rem; */
 }
 
 main {
