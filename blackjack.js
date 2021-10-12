@@ -21,7 +21,7 @@ const boton_pedir_carta = document.getElementById("pedir_carta");
 const boton_parar = document.getElementById("parar");
 const boton_pedir_carta2 = document.getElementById("pedir_carta2");
 const boton_parar2 = document.getElementById("parar2");
-let valor_carta, cartas, elegida, suma, suma2, desicion, turno, parado, parado2, ultimo_toque, x, y;
+let valor_carta, cartas, elegida, suma, suma2, desicion, turno, parado, parado2, ultimo_toque, x, y, cont;
 //De la rama main
 let tres_segundos;
 const body = document.getElementsByTagName("body")[0];
@@ -33,6 +33,12 @@ let puntuacion2 = document.getElementById("puntuacion2");
 let main = document.getElementsByTagName("main")[0];
 let span = document.createElement("span");
 span.classList.add("resultado");
+
+const borrar_img = () => {
+    for (let i = cont - 1; i >= 0; i--) {
+        img[i].remove();
+    } 
+}
 //
 
 const remover_todo = () => {
@@ -103,8 +109,8 @@ const pedir_carta = () => {
         puntuacion2.textContent = suma2;
         y+=50;
     }
-/*     cont++;
-    x+=50; */
+    cont++;
+    /* x+=50; */
     //
 }
 
@@ -200,6 +206,11 @@ boton_comenzar_juego.addEventListener("click", () => {
     parado2 = false;
     activo = true;
     activo2 = true;
+    borrar_img();
+    span.remove();
+    cont = 0
+    puntuacion1.textContent = 0;
+    puntuacion2.textContent = 0;
     boton_pedir_carta.removeAttribute("disabled");
     boton_pedir_carta.setAttribute("enabled","");
     boton_pedir_carta2.removeAttribute("disabled");
