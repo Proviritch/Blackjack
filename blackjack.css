@@ -51,15 +51,17 @@ body {
 
 .blanco {
     --bg-oscuro: rgb(255, 168, 29);
-    --bg-contador1: #fffb00;
-    --bg-contador2: #00bfff;
-    --color-bg-button: rgb(32, 32, 32);
+    --bg-contador2: #fffb00;
+    --bg-contador1: #00bfff;
+    --color-bg-button: rgb(92, 92, 92);
     --color-texto: black;
     --color-comenzar: white;
     --bg-button-comenzar: #f15bb5;
     --color-botones: white;
-    --color-bot: rgb(153, 117, 0);
-    --color-jugador: rgb(0, 85, 155);
+/*     --color-bot: rgb(153, 117, 0);
+    --color-jugador: rgb(0, 85, 155); */
+    --color-bot: black;
+    --color-jugador: black;
     --color-resultado: red;
     --color-header: rgb(197, 197, 197);
     --color-sombra-resultado: rgb(66, 29, 29); 
@@ -186,7 +188,10 @@ span {
 }
 
 #parar, #pedir_carta {
-    border-color: var(--color-borde-button-jugador2);
+/*     border-color: var(--color-borde-button-jugador2);
     background: var(--bg-contador2);
-    color: var(--color-texto);
+    color: var(--color-texto); */
+    border-color: var(--color-botones);
+    background: var(--color-bg-button);
+    color: var(--color-botones);
 }
