@@ -93,7 +93,7 @@ header {
     align-items: center;
     background: var(--color-header);
     transition: background 1s;
-    /* padding: 0 1rem; */
+    padding: 1rem 0;
 }
 
 main {
