@@ -64,7 +64,6 @@ body {
     --color-header: rgb(197, 197, 197);
     --color-sombra-resultado: rgb(66, 29, 29); 
     --filtro: invert(0%);
-    /* --color-borde-button-jugador1: ; */
     background: rgb(216, 216, 216);
     transition: background 1s;
 }
@@ -99,7 +98,6 @@ section {
 button {
     background: var(--color-bg-button);
     display: inline;
-/*     vertical-align: middle; */
     padding: 0.3em 1em;
     border-radius: 5px;
     border-color: var(--color-botones);
@@ -124,6 +122,7 @@ p {
     transition: color 1s;
     text-align: center;
     font-size: 3rem;
+    margin: 0.5em 0;
 }
 
 #en_medio {
@@ -146,7 +145,6 @@ p {
 span {
     border-radius: 5px;
     padding: 0.1em 0.15em;
-    /* margin: 1em 0; */
 }
 
 .resultado {
@@ -183,7 +181,6 @@ span {
     border-color: var(--color-borde-button-jugador1);
     background: var(--bg-contador1);
     color: var(--color-texto);
-    /* color: rgb(34, 34, 34); */
     
 }
 
@@ -191,13 +188,4 @@ span {
     border-color: var(--color-borde-button-jugador2);
     background: var(--bg-contador2);
     color: var(--color-texto);
-    /* color: rgb(34, 34, 34); */
-}
-
-#pedir_carta2 {
-    margin-top: 1em;
-}
-
-#parar {
-    margin-bottom: 1em;
 }
