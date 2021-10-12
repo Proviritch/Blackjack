@@ -118,7 +118,7 @@ button {
     transition: all 1s;
 }
 
-#pedir_carta {
+#pedir_carta0, #pedir_carta {
     margin: 1em 0;
 }
 
@@ -191,12 +191,18 @@ span {
 
 #parar2, #pedir_carta2 {
     border-color: var(--color-borde-button-jugador1);
-    background: var(--bg-contador1);
+    background: var(--bg-contador2);
     color: var(--color-texto);
     
 }
 
 #parar, #pedir_carta {
+    border-color: var(--color-borde-button-jugador2);
+    background: var(--bg-contador1);
+    color: var(--color-texto);
+}
+
+#parar0, #pedir_carta0 {
 /*     border-color: var(--color-borde-button-jugador2);
     background: var(--bg-contador2);
     color: var(--color-texto); */

@@ -5,33 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlackJack</title>
-    <link rel="stylesheet" href="blackjack.css">
-    <link rel="stylesheet" href="media_462.css" media="(min-width: 464px)">
-    <link rel="stylesheet" href="media_1350.css" media="(min-width: 1350px)">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Akronim&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="blackjack.css">
+    <link rel="stylesheet" href="media_462.css" media="(min-width: 464px)">
+    <link rel="stylesheet" href="media_1350.css" media="(min-width: 1350px)">
 </head>
 <body>
     <header>
         <button id="boton_modo_oscuro" type="text">⭐</button>
         <button id="comenzar_juego">Comenzar juego</button>
-        <a id="link" href="blackjack2.htm">Dos jugadores</a>
+        <a id="link" href="blackjack.htm">Un jugador</a>
     </header>
     <main>
         <section id="section_jugador1"></section>
         <section id="en_medio">
             <div class="en_medio_div_principal">
+                <div class="en_medio_div_botones">
+                    <button id="pedir_carta" type="button">Pedir carta</button>
+                    <button id="parar" type="button">Parar</button>
+                </div>
                 <p><span id="puntuacion1">0</span> vs <span id="puntuacion2">0</span></p>
                 <div class="en_medio_div_botones">
-                    <button id="pedir_carta0" type="button">Pedir carta</button>
-                    <button id="parar0" type="button">Parar</button>
+                    <button id="pedir_carta2" type="button">Pedir carta</button>
+                    <button id="parar2" type="button">Parar</button>
                 </div>
             </div>
         </section>
         <section id="section_jugador2"></section>
         <!-- <span id="resultado"></span> -->
     </main>
+    <!-- <button id="comenzar_juego">Comenzar juego</button><br><br> -->
+<!--     <button id="pedir_carta" type="button">Pedir carta jugador 1</button>
+    <button id="parar" type="button">Parar jugador 1</button><br><br> -->
 
     <script src="blackjack.js"></script>
 </body>

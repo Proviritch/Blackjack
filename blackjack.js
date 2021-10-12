@@ -17,8 +17,8 @@ const BARAJA_ORIGINAL = [
 let ARREGLO;
 let BARAJA;
 const boton_comenzar_juego = document.getElementById("comenzar_juego");
-const boton_pedir_carta = document.getElementById("pedir_carta");
-const boton_parar = document.getElementById("parar");
+const boton_pedir_carta = document.getElementById("pedir_carta0");
+const boton_parar = document.getElementById("parar0");
 let valor_carta, cartas, elegida, suma, suma2, desicion,turno, cont, x, oscuro_switch = 0;
 let tres_segundos;
 const body = document.getElementsByTagName("body")[0];
