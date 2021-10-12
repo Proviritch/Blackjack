@@ -44,22 +44,22 @@ body {
     --color-header: rgb(47, 47, 47);
     --color-sombra-resultado: rgb(255, 122, 122); 
     --filtro: invert(90%);
-    --color-borde-button-jugador1: #fffb00;
-    --color-borde-button-jugador2: #00bfff;
+    --color-borde-button-jugador2: #fffb00;
+    --color-borde-button-jugador1: #00bfff;
     transition: background 1s;
 }
 
 .blanco {
     --bg-oscuro: rgb(255, 168, 29);
-    --bg-contador1: #fffb00;
-    --bg-contador2: #00bfff;
+    --bg-contador2: #fffb00;
+    --bg-contador1: #00bfff;
     --color-bg-button: rgb(32, 32, 32);
     --color-texto: black;
     --color-comenzar: white;
     --bg-button-comenzar: #f15bb5;
     --color-botones: white;
-    --color-bot: rgb(153, 117, 0);
-    --color-jugador: rgb(0, 85, 155);
+    --color-bot: black;
+    --color-jugador: black;
     --color-resultado: red;
     --color-header: rgb(197, 197, 197);
     --color-sombra-resultado: rgb(66, 29, 29); 
@@ -179,14 +179,14 @@ span {
 }
 
 #parar2, #pedir_carta2 {
-    border-color: var(--color-borde-button-jugador1);
-    background: var(--bg-contador1);
+    border-color: var(--color-borde-button-jugador2);
+    background: var(--bg-contador2);
     color: var(--color-texto);
     
 }
 
 #parar, #pedir_carta {
-    border-color: var(--color-borde-button-jugador2);
-    background: var(--bg-contador2);
+    border-color: var(--color-borde-button-jugador1);
+    background: var(--bg-contador1);
     color: var(--color-texto);
 }
